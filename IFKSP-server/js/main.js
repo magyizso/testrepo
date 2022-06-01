@@ -18,11 +18,11 @@ document.querySelector('#getDataBtn').addEventListener("click", function () {
 
 });
 // Fill table with server data.
-function fillDataTable(data, tableID) {
-    let table = document.querySelector("#${tableID}");
+function fillDataTable(data, _tableID) {
+    let table = document.querySelector('_tableID')
     if (!table) {
-        console.error('Table ${tableID} is not found');
-                return;
+      //  console.error("Table is not found");
+        return;
     }
 
     let tBody = table.querySelector("tbody");
@@ -33,7 +33,7 @@ function fillDataTable(data, tableID) {
             td.innerHTML = row[k];
             tr.appendChild(td);
         }
-        let btnGroup = createBtnGroup();
+       let btnGroup = createBtnGroup();
         tr.appendChild(btnGroup)
         tBody.appendChild(tr);
     }
@@ -50,13 +50,17 @@ function createAnyElement(name, attributes) {
 
 function createBtnGroup(){
     let group = createAnyElement("div", {class: "btn btn-group"});
-    let infoBtn = createAnyElement("button", {class: "btn btn-info"});
+    let infoBtn = createAnyElement("button", {class: "btn btn-info", onclick: "getInfo(this)"});
     infoBtn.innerHTML ='<i class="fa fa-refresh" aria-hidden="true"></i>';
-    let delBtn = createAnyElement("button", {class: "btn btn-danger"});
+    let delBtn = createAnyElement("button", {class: "btn btn-danger", onclick: "delRow(this)"});
     delBtn.innerHTML ='<i class="fa fa-refresh" aria-hidden="true"></i>';
     group.appendChild(infoBtn);
     group.appendChild(delBtn);
     let td = createAnyElement("td");
     td.appendChild("group");
     return td;
+}
+
+function delRow(el){
+    console.log(el);
 }
